@@ -169,7 +169,7 @@ class FileHelperTest extends Unit
 	
 	public function testIsAbsolute()
 	{
-		$fileName = 'yii2lab/yii2-extension/tests/store/exists.file';
+		$fileName = 'yii2bundle/yii2-extension/tests/store/exists.file';
 		
 		$result = FileHelper::isAbsolute($fileName);
 		$this->tester->assertFalse($result);
