@@ -91,7 +91,7 @@ class Error {
 			return $message;
 		}
 
-		return sprintf("\x1b[%sm", implode(';', array_map('Output::getStyleCode', $styles))) . $message . "\x1b[0m";
+		return sprintf("\x1b[%sm", implode(';', array_map('yii2lab\extension\console\helpers\Error::getStyleCode', $styles))) . $message . "\x1b[0m";
 	}
 
 }
