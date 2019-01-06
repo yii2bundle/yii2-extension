@@ -41,7 +41,7 @@ class SwitchInput extends \kartik\switchinput\SwitchInput
 	}
 
 	public static function semanticConfig($pare = self::YES_NO, $config = []) {
-		list($positive, $negative) = explode('|', $pare);
+		list($positive, $negative) = explode('|', mb_strtolower($pare));
 		$config['onText'] = Yii::t('main', $positive);
 		$config['offText'] = Yii::t('main', $negative);
 		return self::config($config);
