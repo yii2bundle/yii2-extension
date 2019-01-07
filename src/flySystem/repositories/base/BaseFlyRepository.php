@@ -21,6 +21,18 @@ abstract class BaseFlyRepository extends BaseRepository {
         return $staticFs->has($file, $content);
     }
 
+    protected function fileList($dir) {
+        $staticFs = $this->storeInstance();
+        $file = $this->fullName($fileName);
+        return $staticFs->listContents($dir);
+    }
+
+    protected function getMetadata($dir) {
+        $staticFs = $this->storeInstance();
+        $file = $this->fullName($fileName);
+        return $staticFs->getMetadata($dir);
+    }
+
 	protected function writeFile($fileName, $content) {
 		$this->removeFile($fileName);
 		$staticFs = $this->storeInstance();
