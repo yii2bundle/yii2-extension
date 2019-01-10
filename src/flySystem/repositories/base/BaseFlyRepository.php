@@ -23,14 +23,13 @@ abstract class BaseFlyRepository extends BaseRepository {
 
     protected function fileList($dir) {
         $staticFs = $this->storeInstance();
-        $file = $this->fullName($fileName);
         return $staticFs->listContents($dir);
     }
 
-    protected function getMetadata($dir) {
+    protected function getMetadata($fileName) {
         $staticFs = $this->storeInstance();
         $file = $this->fullName($fileName);
-        return $staticFs->getMetadata($dir);
+        return $staticFs->getMetadata($file);
     }
 
 	protected function writeFile($fileName, $content) {
