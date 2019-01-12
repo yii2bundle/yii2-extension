@@ -3,6 +3,7 @@
 namespace yii2lab\extension\code\helpers\parser;
 
 use yii2lab\extension\code\entities\TokenEntity;
+use yii2lab\extension\scenario\collections\ScenarioCollection;
 use yii2lab\extension\scenario\helpers\ScenarioHelper;
 use yii2lab\extension\code\filters\parser\DocCommentOnly;
 use yii2lab\extension\code\filters\parser\RemoveComment;
@@ -71,8 +72,8 @@ class TokenCollectionHelper {
 	}
 	
 	public static function applyFilters($collection, $filters) {
-		$filterCollection = ScenarioHelper::forgeCollection($filters);
-		return ScenarioHelper::runAll($filterCollection, $collection);
+		$filterCollection = new ScenarioCollection($filters);
+		return $filterCollection->runAll($collection);
 	}
 	
 }

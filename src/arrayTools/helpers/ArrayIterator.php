@@ -3,6 +3,7 @@
 namespace yii2lab\extension\arrayTools\helpers;
 
 use yii\web\NotFoundHttpException;
+use yii2lab\extension\scenario\collections\ScenarioCollection;
 use yii2lab\extension\scenario\helpers\ScenarioHelper;
 use yii2lab\domain\data\Query;
 use yii2lab\extension\common\helpers\ReflectionHelper;
@@ -61,7 +62,8 @@ class ArrayIterator  {
 					'class' => 'yii2lab\extension\arrayTools\filters\iterator\\' . ucfirst($filterName),
 					'query' => $query,
 				];
-				$collection = ScenarioHelper::run($filterConfig, $collection);
+				$filterCollection = new ScenarioCollection([$filterConfig]);
+				$collection = $filterCollection->runAll($collection);
 			}
 		}
 		$collection = array_values($collection);

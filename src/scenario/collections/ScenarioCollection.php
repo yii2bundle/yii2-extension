@@ -61,7 +61,7 @@ class ScenarioCollection extends Collection {
         return $data;
     }
 	
-    private function runOne(BaseScenario $filterInstance, $data = null, BaseObject $event = null) {
+    public function runOne(BaseScenario $filterInstance, $data = null, BaseObject $event = null) {
 	    $filterInstance->setData($data);
 	    $filterInstance->event = $event;
 	    $filterInstance->run();

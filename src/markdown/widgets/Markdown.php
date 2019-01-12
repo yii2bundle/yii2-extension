@@ -4,6 +4,7 @@ namespace yii2lab\extension\markdown\widgets;
 
 use yii\apidoc\templates\bootstrap\assets\AssetBundle;
 use yii\base\Widget;
+use yii2lab\extension\scenario\collections\ScenarioCollection;
 use yii2lab\extension\scenario\helpers\ScenarioHelper;
 use yii2lab\extension\markdown\widgets\helpers\MarkdownHelper;
 
@@ -31,8 +32,8 @@ class Markdown extends Widget {
 	 */
 	public function run() {
 		$html = MarkdownHelper::toHtml($this->content);
-		$filterCollection = ScenarioHelper::forgeCollection($this->filters);
-		return ScenarioHelper::runAll($filterCollection, $html);
+		$filterCollection = new ScenarioCollection($this->filters);
+		return $filterCollection->runAll($html);
 	}
 
 	protected function registerAssets() {
