@@ -16,27 +16,6 @@ class ClassHelper {
 		return $className;
 	}
 	
-	/**
-	 * @param      $definition
-	 * @param      $data
-	 * @param null $interfaceClass
-	 *
-	 * @return object
-	 * @throws ClassInstanceException
-	 * @throws InvalidConfigException
-	 *
-	 * @deprecated use InstanceHelper
-	 */
-	public static function createInstance($definition, $data, $interfaceClass = null) {
-		$definition = self::normalizeComponentConfig($definition);
-		$handlerInstance = Yii::createObject($definition);
-		if($interfaceClass) {
-			ClassHelper::isInstanceOf($handlerInstance, $interfaceClass);
-		}
-		Yii::configure($handlerInstance, $data);
-		return $handlerInstance;
-	}
-	
 	public static function isInstanceOf($instance, $interface) {
 		if(empty($instance)) {
 			throw new InvalidArgumentException("Argument \"instance\" is empty");
@@ -109,22 +88,6 @@ class ClassHelper {
             self::isInstanceOf($object, $interface);
         }
         return $object;
-    }
-
-    /**
-     * @param $object
-     * @param $interface
-     *
-     * @throws ServerErrorHttpException
-     * @deprecated use self::isInstanceOf()
-     */
-    public static function checkInterface($object, $interface) {
-        if(!is_object($object)) {
-            throw new ServerErrorHttpException('Object not be object type');
-        }
-        if(!$object instanceof $interface) {
-            throw new ServerErrorHttpException('Object not be instance of "'.$interface.'"');
-        }
     }
 
     public static function configure($object, $properties)

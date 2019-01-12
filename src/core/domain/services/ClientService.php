@@ -5,7 +5,7 @@ namespace yii2lab\extension\core\services;
 use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\UnauthorizedHttpException;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 use yii2lab\rest\domain\entities\RequestEntity;
 use yii2lab\extension\web\enums\HttpMethodEnum;
 use yii2lab\rest\domain\helpers\MiscHelper;

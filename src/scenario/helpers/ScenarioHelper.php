@@ -5,6 +5,7 @@ namespace yii2lab\extension\scenario\helpers;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\web\ServerErrorHttpException;
+use yii2lab\extension\common\helpers\InstanceHelper;
 use yii2lab\extension\scenario\base\BaseScenario;
 use yii2lab\extension\arrayTools\helpers\Collection;
 use yii2lab\domain\values\BaseValue;
@@ -21,7 +22,7 @@ class ScenarioHelper {
 	
 	public static function runHandler($handlerDefinition, $data) {
 		/** @var RunInterface $handlerInstance */
-		$handlerInstance = ClassHelper::createInstance($handlerDefinition, $data, RunInterface::class);
+		$handlerInstance = InstanceHelper::create($handlerDefinition, $data, RunInterface::class);
 		return $handlerInstance->run();
 	}
 	

@@ -33,14 +33,7 @@ class Behavior {
 		return $config;
 	}
 	
-	/**
-	 * @param null $only
-	 *
-	 * @return array
-	 *
-	 * @deprecated use self::auth() method
-	 */
-	static function apiAuth($only = null) {
+	private function apiAuth($only = null) {
 		$config = [
 			'class' => HttpTokenAuth::class,
 		];
