@@ -5,7 +5,7 @@ namespace yii2lab\extension\core\domain\repositories\rest;
 use Yii;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii\web\ServerErrorHttpException;
-use yii2lab\domain\repositories\BaseApiRepository;
+use yii2lab\rest\domain\repositories\base\BaseRestRepository;
 
 /**
  * Class ClientRepository
@@ -14,7 +14,7 @@ use yii2lab\domain\repositories\BaseApiRepository;
  *
  * @deprecated
  */
-class ClientRepository extends BaseApiRepository {
+class ClientRepository extends BaseRestRepository {
 	
 	public function getBaseUrl() {
 		$baseUrl = env('servers.core.domain');
