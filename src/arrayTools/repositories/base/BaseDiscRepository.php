@@ -3,6 +3,7 @@
 namespace yii2lab\extension\arrayTools\repositories\base;
 
 use Yii;
+use yii2lab\domain\repositories\BaseRepository;
 use yii2lab\extension\store\Store;
 
 abstract class BaseDiscRepository extends BaseRepository {
