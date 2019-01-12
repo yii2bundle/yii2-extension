@@ -93,7 +93,7 @@ class Helper {
 	static function getDbConfig($name = null, $isEnvTest = YII_ENV_TEST)
 	{
 		$configName = $isEnvTest ? 'test' : 'main';
-		$config = env("db.$configName");
+		$config = EnvService::get("db.$configName");
 		if($name) {
 			return $config[$name];
 		} else {

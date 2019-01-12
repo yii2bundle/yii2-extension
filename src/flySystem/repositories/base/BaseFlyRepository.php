@@ -4,6 +4,7 @@ namespace yii2lab\extension\flySystem\repositories\base;
 
 use creocoder\flysystem\Filesystem;
 use Yii;
+use yii2lab\app\domain\helpers\EnvService;
 use yii2lab\domain\repositories\BaseRepository;
 
 abstract class BaseFlyRepository extends BaseRepository {
@@ -61,8 +62,8 @@ abstract class BaseFlyRepository extends BaseRepository {
 	}
 	
 	private function initStoreInstance() {
-		$definition = env('servers.static.connection');
-		$driver = env('servers.static.driver');
+		$definition = EnvService::get('servers.static.connection');
+		$driver = EnvService::get('servers.static.driver');
 		$driver = ucfirst($driver);
 		$definition['class'] = 'creocoder\flysystem\\' . $driver . 'Filesystem';
 		$this->storeInstance = Yii::createObject($definition);

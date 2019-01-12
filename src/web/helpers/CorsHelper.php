@@ -3,6 +3,7 @@
 namespace yii2lab\extension\web\helpers;
 
 use yii\filters\Cors;
+use yii2lab\app\domain\helpers\EnvService;
 use yii2lab\extension\web\enums\HttpHeaderEnum;
 use yii2lab\extension\web\enums\HttpMethodEnum;
 
@@ -41,7 +42,7 @@ class CorsHelper {
 	
 	private static function generateOriginFromEnvUrls() {
 		$origin = [];
-		$urls = env('url');
+		$urls = EnvService::get('url');
 		foreach($urls as $url) {
 			$origin[] = trim($url, SL);
 		}

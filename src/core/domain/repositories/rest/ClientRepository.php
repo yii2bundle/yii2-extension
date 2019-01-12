@@ -3,6 +3,7 @@
 namespace yii2lab\extension\core\domain\repositories\rest;
 
 use Yii;
+use yii2lab\app\domain\helpers\EnvService;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii\web\ServerErrorHttpException;
 use yii2lab\rest\domain\repositories\base\BaseRestRepository;
@@ -17,7 +18,7 @@ use yii2lab\rest\domain\repositories\base\BaseRestRepository;
 class ClientRepository extends BaseRestRepository {
 	
 	public function getBaseUrl() {
-		$baseUrl = env('servers.core.domain');
+		$baseUrl = EnvService::get('servers.core.domain');
 		if(YII_ENV_TEST) {
 			$baseUrl .= 'index-test.php/';
 		}

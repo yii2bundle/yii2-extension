@@ -4,13 +4,14 @@ namespace yii2lab\extension\core\domain\helpers;
 
 use Yii;
 use yii\base\InvalidConfigException;
+use yii2lab\app\domain\helpers\EnvService;
 use yii2lab\extension\web\enums\HttpHeaderEnum;
 use yii2module\account\domain\v2\helpers\AuthHelper;
 
 class CoreHelper {
 	
 	public static function defaultApiVersionNumber($default = null) {
-		$version = env('servers.core.defaultVersion', $default);
+		$version = EnvService::get('servers.core.defaultVersion', $default);
 		if(empty($version)) {
 			throw new InvalidConfigException('Undefined version in ' . self::class);
 		}
@@ -54,7 +55,7 @@ class CoreHelper {
 	}
 	
 	private static function getCoreDomain() {
-		$domain = env('servers.core.domain');
+		$domain = EnvService::get('servers.core.domain');
 		$domain = rtrim($domain, SL);
 		return $domain;
 	}
